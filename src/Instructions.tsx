@@ -112,7 +112,7 @@ function Instructions({ onBack }: InstructionsProps) {
             <img
               src="/logo-header-new.png"
               alt="DexNet Logo"
-              className="h-12 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
           </div>
         </nav>

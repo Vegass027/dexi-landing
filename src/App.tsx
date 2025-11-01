@@ -7,10 +7,12 @@ function App() {
 
   const goToInstructions = () => {
     setCurrentPage('instructions');
-    // Прокрутка наверх при переходе на страницу инструкций
+    // Немедленная прокрутка наверх при переходе на страницу инструкций
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Дополнительная прокрутка через небольшую задержку для надежности
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 50);
   };
 
   const goToHome = () => {
@@ -57,7 +59,7 @@ function App() {
         </nav>
       </header>
 
-      <main className="pt-24 sm:pt-20">
+      <main className="pt-32 sm:pt-20">
         <section className="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div className="max-w-6xl mx-auto animate-fade-in">
             <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8">
@@ -182,9 +184,9 @@ function App() {
             <div className="max-w-6xl mx-auto">
               
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-3 mb-6">
-                  <Target className="w-8 h-8 text-[#01d1bc]" />
-                  <h2 className="text-4xl md:text-5xl font-bold">
+                <div className="inline-flex items-center gap-2 sm:gap-3 mb-6">
+                  <Target className="w-6 sm:w-8 h-6 sm:h-8 text-[#01d1bc]" />
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                     С какими задачами <span className="text-[#01d1bc]">помогает?</span>
                   </h2>
                 </div>
@@ -333,9 +335,6 @@ function App() {
         <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-b from-[#0d1419] to-[#101b24]">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
-                Выберите свой <span className="text-[#01d1bc]">план</span>
-              </h2>
               <p className="text-lg sm:text-xl text-[#d5ebea]/70 max-w-2xl mx-auto px-4">
                 Получите доступ ко всем возможностям Dexi-Agent
               </p>

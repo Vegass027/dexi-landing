@@ -5,8 +5,24 @@ import Instructions from './Instructions';
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'instructions'>('home');
 
+  const goToInstructions = () => {
+    setCurrentPage('instructions');
+    // Прокрутка наверх при переходе на страницу инструкций
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
+  const goToHome = () => {
+    setCurrentPage('home');
+    // Прокрутка наверх при возврате на главную
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   if (currentPage === 'instructions') {
-    return <Instructions onBack={() => setCurrentPage('home')} />;
+    return <Instructions onBack={goToHome} />;
   }
   return (
     <div className="min-h-screen bg-[#101b24] text-[#d5ebea]">
@@ -30,13 +46,13 @@ function App() {
               <span className="hidden xs:inline">@dexi_agent</span>
               <span className="xs:hidden">Telegram</span>
             </a>
-            <button 
-              onClick={() => setCurrentPage('instructions')}
-              className="px-4 sm:px-6 py-2 bg-[#01d1bc] text-[#030507] rounded-lg font-semibold hover:scale-105 transition-transform text-sm sm:text-base w-full sm:w-auto"
-            >
-              <span className="hidden sm:inline">Инструкция по использованию</span>
-              <span className="sm:hidden">Инструкция</span>
-            </button>
+          <button 
+            onClick={goToInstructions}
+            className="px-4 sm:px-6 py-2 bg-[#01d1bc] text-[#030507] rounded-lg font-semibold hover:scale-105 transition-transform text-sm sm:text-base w-full sm:w-auto"
+          >
+            <span className="hidden sm:inline">Инструкция по использованию</span>
+            <span className="sm:hidden">Инструкция</span>
+          </button>
           </div>
         </nav>
       </header>
@@ -356,8 +372,8 @@ function App() {
                     <div className="flex items-center gap-3 p-3 sm:p-4 bg-[#5b7171]/10 rounded-xl">
                       <RefreshCw className="w-5 sm:w-6 h-5 sm:h-6 text-[#01d1bc] flex-shrink-0" />
                       <span className="text-sm sm:text-base text-[#d5ebea]">Дополнительные 700 запросов за $30</span>
-                    </div>
-                    
+        </div>
+
                     <div className="flex items-center gap-3 p-3 sm:p-4 bg-[#5b7171]/10 rounded-xl">
                       <Sparkles className="w-5 sm:w-6 h-5 sm:h-6 text-[#01d1bc] flex-shrink-0" />
                       <span className="text-sm sm:text-base text-[#d5ebea]">Все функции Pro-версии</span>
@@ -388,7 +404,7 @@ function App() {
         <section className="py-12 sm:py-16 lg:py-20">
           <div className="container mx-auto px-4 sm:px-6 text-center">
             <button 
-              onClick={() => setCurrentPage('instructions')}
+              onClick={goToInstructions}
               className="px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 bg-[#01d1bc] text-[#030507] rounded-lg font-bold text-base sm:text-lg lg:text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto shadow-lg shadow-[#01d1bc]/30"
             >
               <span className="hidden sm:inline">Инструкция по использованию</span>
@@ -402,11 +418,11 @@ function App() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-4 sm:gap-6 text-center">
             <div className="flex items-center">
-              <img
-                src="/logo-header-new.png"
-                alt="DexNet Logo"
+            <img
+              src="/logo-header-new.png"
+              alt="DexNet Logo"
                 className="h-5 sm:h-6 w-auto object-contain"
-              />
+            />
             </div>
             <p className="text-[#5b7171] text-sm sm:text-base">2025 Dexi-Agent. Все права защищены.</p>
           </div>
